@@ -19,15 +19,3 @@ CREATE TABLE log (
     date_request TIMESTAMP NOT NULL,
     active BOOLEAN DEFAULT FALSE
 );
-
-INSERT INTO clipboard VALUES (1, 'Yes', '128.0.0.1', '25/05/2025', '25/05/2025');
-INSERT INTO clipboard VALUES (2, 'Yes', '128.0.0.1', '25/05/2025', '25/05/2025');
-INSERT INTO clipboard VALUES (3, 'Yes', '128.0.0.1', '25/05/2025', '25/05/2025');
-
-SELECT * FROM clipboard;
-DELETE FROM clipboard;
-
-SELECT * FROM log;
-DELETE FROM log;
-
-SELECT random_id FROM generate_series(1, 99999) AS random_id LEFT JOIN clipboard ON clipboard.id = random_id WHERE clipboard.id IS NULL ORDER BY random() LIMIT 1;

@@ -1,4 +1,4 @@
-# Clipboard API !
+# Clipboard API
 
 An API that acts as a clipboard, allowing you to copy/paste text and retrieve it from different devices.
 It's made in Go, using the Gin, GoDotEnv, Cron and Gorm libraries. You must use a postgres database
@@ -86,5 +86,5 @@ To update clipboard content, you can make this POST request. You'll need to ente
 >/port
 
 Finally, to delete a clipboard, you need to specify the ID and password if you have one, and make a DELETE request.
->port
+>/port
 

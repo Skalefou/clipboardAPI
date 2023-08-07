@@ -20,5 +20,5 @@ func main() {
 
 	controller.HttpSource(router)
 
-	router.Run(":8080")
+	router.Run(security.PORT_APP)
 }

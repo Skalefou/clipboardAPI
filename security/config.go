@@ -22,6 +22,7 @@ var ANTI_DDOS_TIME int
 var CLIP_DELETION_TIME_WITHOUT_PASSWORD int
 var CLIP_DELETION_TIME_WITH_PASSWORD int
 var LOG_DELETION_TIME int
+var PORT_APP string
 var Db *gorm.DB
 var ClipboardJson models.Clipboard
 
@@ -60,4 +61,9 @@ func LoadConfig() {
 
 	LOG_DELETION_TIME, err = strconv.Atoi(os.Getenv("LOG_DELETION_TIME"))
 	verifyErrorInt(&err, "Clip deletion time with password is wrong", LOG_DELETION_TIME)
+
+	LOG_DELETION_TIME, err = strconv.Atoi(os.Getenv("LOG_DELETION_TIME"))
+	verifyErrorInt(&err, "Clip deletion time with password is wrong", LOG_DELETION_TIME)
+
+	PORT_APP = os.Getenv("PORT_APP")
 }

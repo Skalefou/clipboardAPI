@@ -29,7 +29,7 @@ var lastIdLog int
 
 // Checks whether the values of environment variables managing time are consistent
 func verifyErrorInt(err *error, message string, value int) {
-	if err != nil || value < 0 {
+	if err == nil || value < 0 {
 		log.Fatal(message)
 	}
 }

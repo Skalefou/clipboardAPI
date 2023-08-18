@@ -2,7 +2,8 @@ DROP TABLE IF EXISTS clipboard;
 DROP TABLE IF EXISTS log;
 
 CREATE TABLE clipboard (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
+    port INT NOT NULL,
     message TEXT,
     password VARCHAR(72),
     ip_owner VARCHAR(15) NOT NULL,

@@ -20,5 +20,5 @@ func main() {
 
 	controller.HttpSource(router)
 
-	err := router.Run(":" + security.PORT_APP)
+	router.Run(":" + security.PORT_APP)
 }

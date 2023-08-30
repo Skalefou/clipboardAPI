@@ -22,6 +22,7 @@ Prerequisites : Goland (1.20.4), Postgresql
 ```shell
 git clone https://github.com/Skalefou/clipboardAPI.git
 ```
+> Rename "example.config.env" to "config.env"
 > Edit config.env file
 
 | Variable Name                       | Value Type | Description                                                                                                               |
@@ -43,22 +44,22 @@ DROP TABLE IF EXISTS clipboard;
 DROP TABLE IF EXISTS log;
 
 CREATE TABLE clipboard (
-                           id INT PRIMARY KEY,
-                           message TEXT,
-                           password VARCHAR(72),
-                           ip_owner VARCHAR(15) NOT NULL,
-                           creation_date TIMESTAMP NOT NULL,
-                           last_update TIMESTAMP NOT NULL,
-                           last_see TIMESTAMP NOT NULL
+    id INT PRIMARY KEY,
+    message TEXT,
+    password VARCHAR(72),
+    ip_owner VARCHAR(15) NOT NULL,
+    creation_date TIMESTAMP NOT NULL,
+    last_update TIMESTAMP NOT NULL,
+    last_see TIMESTAMP NOT NULL
 );
 
 CREATE TABLE log (
-                     id SERIAL PRIMARY KEY,
-                     type_request INT NOT NULL,
-                     ip_user VARCHAR(21),
-                     clipboard INT NOT NULL,
-                     date_request TIMESTAMP NOT NULL,
-                     active BOOLEAN DEFAULT FALSE
+    id SERIAL PRIMARY KEY,
+    type_request INT NOT NULL,
+    ip_user VARCHAR(21),
+    clipboard INT NOT NULL,
+    date_request TIMESTAMP NOT NULL,
+    active BOOLEAN DEFAULT FALSE
 );
 ```
 
@@ -70,7 +71,7 @@ go run main.go
 ```
 
 To create a clipboard, you need to make a POST request.
->/createPort
+>/clipboard/createPort
 
 You can also send a json file containing your password, as shown below. You need to replace the three dots with a bcrypt hash
 ```json
@@ -80,7 +81,7 @@ You can also send a json file containing your password, as shown below. You need
 ```
 
 this will return a JSON clipboard with a maximum ID of 6 digits. You can obtain the contents of the page using this GET request (you must enter the id and password).
->/port
+>/clipboard/port
 
 ```json
 {
@@ -90,7 +91,7 @@ this will return a JSON clipboard with a maximum ID of 6 digits. You can obtain 
 ```
 
 To update clipboard content, you can make this POST request. You'll need to enter at least the id and password if you've set one.
->/port
+>/clipboard/port
 
 ```json
 {
@@ -101,4 +102,4 @@ To update clipboard content, you can make this POST request. You'll need to ente
 ```
 
 Finally, to delete a clipboard, you need to specify the ID and password if you have one, and make a DELETE request.
->/port
+>/clipboard/port

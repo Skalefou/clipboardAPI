@@ -9,15 +9,30 @@ package repository
 import (
 	"clipboardAPI/models"
 	"clipboardAPI/security"
+	"math/rand"
 	"time"
 )
 
 // Determines a port by randomly assigning an unused port of up to 6 digits.
 func GenPort() int {
-	var id_generate int
-	security.Db.Raw("SELECT random_id FROM generate_series(1, 999999) AS random_id LEFT JOIN clipboard ON clipboard.id = random_id WHERE clipboard.id IS NULL ORDER BY random() LIMIT 1").
-		Scan(&id_generate)
-	return id_generate
+	var portGenerate int
+	var portUse []int
+	var unused [999999]bool
+
+	security.Db.Table("clipboard").Select("port").Scan(&portUse)
+
+	for _, num := range portUse {
+		unused[num] = true
+	}
+
+	for {
+		portGenerate = 1 + rand.Intn(999999)
+		if !unused[portGenerate] {
+			break
+		}
+	}
+
+	return portGenerate
 }
 
 // Determines if the ip is already in use

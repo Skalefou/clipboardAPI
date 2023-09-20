@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS clipboard;
 DROP TABLE IF EXISTS log;
 
 CREATE TABLE clipboard (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY,
     port INT NOT NULL,
     message TEXT,
     password VARCHAR(72),
@@ -13,10 +13,10 @@ CREATE TABLE clipboard (
 );
 
 CREATE TABLE log (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY,
     type_request INT NOT NULL,
     ip_user VARCHAR(21),
-    clipboard INT NOT NULL,
+    clipboard UUID NOT NULL,
     date_request TIMESTAMP NOT NULL,
     active BOOLEAN DEFAULT FALSE
 );

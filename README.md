@@ -13,8 +13,9 @@ Prerequisites : Goland (1.20.4), Postgresql
 |----------------------------|---------|----------------------------------------------|
 | github.com/gin-gonic/gin   | v1.9.1	 | Web framework for Go                         | 
 | github.com/joho/godotenv	  | v1.5.1  | Go library for loading environment variables | 
-| gorm.io/driver/postgres	   | v1.5.2  | Postgres driver for GORM, a Go ORM           |
-| gorm.io/gorm               | v1.25.2 | 	Go ORM with support for multiple databases  | 
+| gorm.io/driver/postgres	   | v1.5.2  | Postgres driver for GORM, a Go ORM     t for multiple databases  |       |
+| gorm.io/gorm               | v1.25.2 | 	Go ORM with suppor
+| github.com/google/uuid     | v1.3.1  | 	Go package for UUIDs                        |
 
 ## Installation
 

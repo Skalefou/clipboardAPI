@@ -11,6 +11,7 @@ import (
 	"clipboardAPI/repository"
 	"clipboardAPI/security"
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"net/http"
 )
 
@@ -37,7 +38,7 @@ func GetPort(c *gin.Context) {
 
 	password := security.ClipboardJson.Password
 	security.ClipboardJson = repository.GetClipboard(&security.ClipboardJson)
-	if security.ClipboardJson.ID == 0 {
+	if security.ClipboardJson.ID == uuid.Nil {
 		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "wrong clipboard or password"})
 	} else {
 		if password != security.ClipboardJson.Password {

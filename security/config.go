@@ -9,6 +9,7 @@ package security
 import (
 	"clipboardAPI/models"
 	"fmt"
+	"github.com/google/uuid"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -26,7 +27,7 @@ var PORT_APP string
 var Db *gorm.DB
 var ClipboardJson models.Clipboard
 
-var lastIdLog int
+var lastIdLog uuid.UUID
 
 // Checks whether the values of environment variables managing time are consistent
 func verifyErrorInt(err *error, message string, value int) {
